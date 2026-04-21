@@ -1,0 +1,32 @@
+# GitHub Actions 正确格式
+name: 原神抽卡逻辑 TDD 自动化测试
+
+# 触发条件：推送到 develop 分支时自动运行
+on:
+  push:
+    branches:
+      - develop
+
+# 任务（GitHub Actions 必须用 jobs）
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python 3.9
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      - name: 安装依赖（清华源）
+        run: |
+          python -m pip install --upgrade pip
+          pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+
+      - name: 代码规范检查（严重错误直接阻断）
+        run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+      - name: 运行 pytest 测试
+        run: pytest test_business_logic.py -v
