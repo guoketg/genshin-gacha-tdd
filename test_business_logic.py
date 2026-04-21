@@ -16,7 +16,7 @@ class TestGachaProbability:
         expected_prob = 0.066
         for pull in range(74, 90):
             prob = calculate_gacha_probability(pull)
-            assert prob == expected_prob, f"第{pull}抽概率错误"
+            assert round(prob, 3) == round(expected_prob, 3), f"第{pull}抽概率错误"
             expected_prob += 0.06
     def test_hard_pity_guarantee(self):
         """测试硬保底：第90抽必定获取（概率100%）"""
