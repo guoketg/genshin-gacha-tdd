@@ -18,4 +18,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
       - name: Test with pytest
-        run: pytest test_business_logic.py -v
+        run: |
+          pytest test_business_logic.py -v --tb=short
