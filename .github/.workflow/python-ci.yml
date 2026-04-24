@@ -19,4 +19,7 @@ jobs:
           pip install pytest
       - name: Test with pytest
         run: |
+          echo "Running command:"
+          echo "pytest test_business_logic.py -v --tb=short"
           pytest test_business_logic.py -v --tb=short
+          
