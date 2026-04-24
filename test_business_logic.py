@@ -35,3 +35,4 @@ class TestGachaProbability:
         """测试超过90抽：超过90抽应重置为新⼀轮保底"""
         prob = calculate_gacha_probability(91)
         assert prob == 0.006, "第91抽（新⼀轮第1抽）概率错误"   
+

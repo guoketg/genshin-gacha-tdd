@@ -1,3 +1,4 @@
+
 def calculate_gacha_probability(pull_num):
     if not isinstance(pull_num, int) or pull_num <= 0:
         raise ValueError("抽数必须是正整数")
